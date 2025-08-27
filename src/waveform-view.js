@@ -11,6 +11,7 @@ import PlayheadLayer from './playhead-layer';
 import SegmentsLayer from './segments-layer';
 import WaveformAxis from './waveform-axis';
 import WaveformShape from './waveform-shape';
+import WaveformGrids from './waveform-grids';
 
 import { formatTime, getMarkerObject, isFinite, isNumber } from './utils';
 
@@ -77,6 +78,8 @@ function WaveformView(waveformData, container, peaks, viewOptions) {
   self.initHighlightLayer();
 
   self._createAxisLabels();
+
+  self._createGridlines();
 
   self._playheadLayer = new PlayheadLayer(
     self._peaks.player,
@@ -298,6 +301,14 @@ WaveformView.prototype.setAxisGridlineColor = function(color) {
   this._axisLayer.draw();
 };
 
+WaveformView.prototype._createGridlines = function() {
+  this._gridLinesLayer = new Konva.Layer({ listening: false });
+  this._grids = new WaveformGrids(this, this._viewOptions);
+
+  this._grids.addToLayer(this._gridLinesLayer);
+  this._stage.add(this._gridLinesLayer);
+};
+
 WaveformView.prototype.showPlayheadTime = function(show) {
   this._playheadLayer.showPlayheadTime(show);
 };
@@ -497,6 +508,10 @@ WaveformView.prototype.fitToContainer = function() {
       this._pointsLayer.fitToView();
     }
   }
+};
+
+WaveformView.prototype.toggleGrid = function(view) {
+  this._grids.toggleGrid(view);
 };
 
 WaveformView.prototype.destroy = function() {
