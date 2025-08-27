@@ -76,7 +76,7 @@
           <div>
               <button data-action="toggle-gridlines">Show/hide gridlines</button>
               <label for="gridlines-count">Gridlines scale</label>
-              <input type="range" id="gridlines-count" min="1" max="5" step="1">
+              <input type="range" id="gridlines-count" min="0" max="4" step="1">
               </div>
           <div>
               <label for="major-gridlines-color">Major gridlines color</label>
@@ -139,11 +139,11 @@
                 };
 
                 var gridlineScales = {
+                    "0": 0.05,
                     "1": 0.1,
                     "2": 0.2,
                     "3": 0.25,
                     "4": 0.5,
-                    "5": 0.75
                 };
 
                 document.getElementById('amplitude-scale').addEventListener('input', function(event) {
