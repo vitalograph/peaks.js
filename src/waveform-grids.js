@@ -24,13 +24,17 @@ function WaveformGrids(view, options) {
   self._intermediateMajorGridlineColor = options.intermediateMajorGridlineColor;
   self._intermediateMinorGridlineColor = options.intermediateMinorGridlineColor;
   self._intermediateSize = options.intermediateSize;
-  self._hidden = false;
+  self._hidden = true;
 
   self._gridShape = new Konva.Shape({
     sceneFunc: function(context) {
       self.drawGrid(context, view);
     }
   });
+
+  if (self._hidden) {
+    view._gridLinesLayer.hide();
+  }
 }
 
 WaveformGrids.prototype.addToLayer = function(layer) {
@@ -43,6 +47,10 @@ WaveformGrids.prototype.setIntermediateMajorGridlineColor = function(color) {
 
 WaveformGrids.prototype.setIntermediateMinorGridlineColor = function(color) {
   this._intermediateMinorGridlineColor = color;
+};
+
+WaveformGrids.prototype.setIntermediateSize = function(size) {
+  this._intermediateSize = size;
 };
 
 /**

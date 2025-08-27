@@ -522,12 +522,7 @@
                 });
 
                 document.querySelector('button[data-action="toggle-gridlines"]').addEventListener('click', function(event) {
-                    var container = document.getElementById('zoomview-container');
-                    var zoomview = peaksInstance.views.getView('zoomview');
-
-                    if (zoomview) {
-                        peaksInstance.views.toggleGridlines();
-                    }
+                    peaksInstance.views.toggleGridlines();
                 });
 
                 // Point events
