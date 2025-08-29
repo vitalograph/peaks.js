@@ -157,4 +157,14 @@ ViewController.prototype.getScrollbar = function() {
   return this._scrollbar;
 };
 
+ViewController.prototype.toggleGridlines = function() {
+  if (this._zoomview) {
+    this._zoomview.toggleGrid(this._zoomview);
+  }
+
+  if (this._overview) {
+    this._overview.toggleGrid(this._overview);
+  }
+};
+
 export default ViewController;

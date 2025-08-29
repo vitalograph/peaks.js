@@ -108,6 +108,9 @@ declare module 'peaks.js' {
     enablePoints?: boolean;
     enableSegments?: boolean;
     segmentOptions?: SegmentDisplayOptions;
+    intermediateMajorGridlineColor?: string;
+    intermediateMinorGridlineColor?: string;
+    intermediateSize?: number;
   }
 
   interface ZoomViewOptions extends ViewOptions {
@@ -317,6 +320,12 @@ declare module 'peaks.js' {
     createPointMarker?: (options: CreatePointMarkerOptions) => PointMarker;
     /** External Player */
     player?: PlayerAdapter;
+    /** The color of the major intermediate gridlines */
+    intermediateMajorGridlineColor?: string;
+    /** The color of the minor intermediate gridlines */
+    intermediateMinorGridlineColor?: string;
+    /** The fraction of the view that a gridline should be placed a value between 0 - 1 */
+    intermediateSize?: number;
   }
 
   interface SetSourceRequiredOptions {
@@ -509,6 +518,7 @@ declare module 'peaks.js' {
     enableMarkerEditing: (enable: boolean) => void;
     enableSeek: (enable: boolean) => void;
     fitToContainer: () => void;
+    toggleGrid: (view: WaveformView) => void;
   }
 
   interface WaveformOverview extends WaveformView {
@@ -536,6 +546,12 @@ declare module 'peaks.js' {
 
   interface Scrollbar {
     fitToContainer: () => void;
+  }
+
+  interface WaveformGrid {
+    setIntermediateMajorGridlineColor: (color: string) => void;
+    setIntermediateMinorGridlineColor: (color: string) => void;
+    setIntermediateSize: (size: number) => void;
   }
 
   export interface PeaksInstance {
