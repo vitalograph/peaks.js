@@ -324,7 +324,7 @@ declare module 'peaks.js' {
     intermediateMajorGridlineColor?: string;
     /** The color of the minor intermediate gridlines */
     intermediateMinorGridlineColor?: string;
-    /** The fraction of the view that a gridline should be placed */
+    /** The fraction of the view that a gridline should be placed a value between 0 - 1 */
     intermediateSize?: number;
   }
 
